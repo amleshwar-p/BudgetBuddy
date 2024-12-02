@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body {
+  background-color: #1C1C1E;
+  /* Neutral dark grey */
+  color: #E6E6E6;
+  /* Off-white for better contrast */
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+main {
+  max-width: 400px;
+  margin: 30px auto;
+}
+
+.budget-title {
+  font-size: 2.6rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #A3A3A3;
+  /* Soft grey for headings */
+  text-align: center;
+  /* margin-bottom: 25px; */
+}
+
+h1 span {
+  font-size: 1.3rem;
+
+
+}
+
+form {
+  /* margin-top: 20px; */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input {
+  width: 100%;
+  background-color: #262628;
+  /* Medium dark grey for inputs */
+  color: #E6E6E6;
+  /* Whitish text for inputs */
+  font-size: 0.9rem;
+  border: 1px solid #3D3D3F;
+  /* Border with slight contrast */
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+form input::placeholder {
+  color: #9A9A9A;
+  /* Softer grey for placeholder text */
+}
+
+form input:focus {
+  outline: none;
+  border-color: #5C5C5E;
+  /* Neutral focus color */
+  background-color: #2F2F31;
+  /* Slightly lighter background on focus */
+  box-shadow: 0 0 5px rgba(92, 92, 94, 0.3);
+  /* Subtle glow */
+}
+
+form input[type="datetime-local"] {
+  color: #CFCFCF;
+  /* Neutral text for date input */
+  font-size: 0.9rem;
+}
+
+form .basic-info {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+form button {
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #6f6f72;
+  /* Dark grey for buttons */
+  color: #E6E6E6;
+  /* Whitish text */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form button:hover {
+  background-color: #5e5e5f;
+  /* Slightly lighter grey on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+}
+
+.transactions {
+  margin-top: 20px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  background-color: #262628;
+  /* Match input background */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.transaction:hover {
+  transform: translateY(-2px);
+  /* Slight hover effect */
+  background-color: #303033;
+  /* Slightly lighter grey */
+}
+
+.transaction .name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #E6E6E6;
+  /* Whitish text */
+}
+
+.transaction .description {
+  font-size: 0.85rem;
+  color: #9A9A9A;
+  /* Subtle grey for descriptions */
+}
+
+.transaction .right {
+  text-align: right;
+}
+
+.transaction .datetime {
+  font-size: 0.8rem;
+  color: #B8B8B8;
+  /* Softer grey for datetime */
+}
+
+.balance.positive {
+  color: #68B77E;
+  /* Green for positive balance */
+}
+
+.balance.negative {
+  color: #d1313c;
+  /* Red for negative balance */
+}
+
+
+.price.green {
+  color: #68B77E;
+  /* Muted green for positive values */
+  font-weight: bold;
+}
+
+.price.red {
+  color: #d1313c;
+  /* Muted red for negative values */
+  font-weight: bold;
+}
+
+.reset-expenses {
+  font-size: 0.7rem;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #6f6f72;
+  /* Dark grey for buttons */
+  color: #E6E6E6;
+  /* Whitish text */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.reset-expenses:hover {
+  background-color: #5e5e5f;
+  /* Slightly lighter grey on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+}
