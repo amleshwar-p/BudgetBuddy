@@ -8,30 +8,32 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/test', (req, res) => {
-    res.json("Testing Donee");
-})
+// Establish MongoDB connection once
+mongoose.connect(process.env.MONGO_URL)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Failed to connect to MongoDB', err));
 
+// Test route
+app.get('/api/test', (req, res) => {
+    res.json("Testing Done");
+});
+
+// Create new transaction
 app.post('/api/transaction', async (req, res) => {
-    // console.log(process.env.MONGO_URL);
-    await mongoose.connect(process.env.MONGO_URL);
     const { name, description, datetime, price } = req.body;
     const transaction = await Transaction.create({ name, description, datetime, price });
-
     res.json(transaction);
 });
 
+// Get all transactions
 app.get('/api/transactions', async (req, res) => {
-    await mongoose.connect(process.env.MONGO_URL);
     const transactions = await Transaction.find();
-
     res.json(transactions);
-})
+});
 
-// Add a DELETE endpoint to reset all transactions
+// Delete all transactions (reset)
 app.delete('/api/transactions/reset', async (req, res) => {
     try {
-        // Delete all transactions from the database
         await Transaction.deleteMany({});
         res.json({ message: 'All transactions deleted' });
     } catch (error) {
@@ -39,8 +41,7 @@ app.delete('/api/transactions/reset', async (req, res) => {
     }
 });
 
-app.listen(4000, () => {
-    console.log("Server is running on port 4000");
-})
-
-//OuRQ3V4BFdDnbXe4
+// Start the server
+app.listen(process.env.PORT || 4000, () => {
+    console.log("Server is running on port", process.env.PORT || 4000);
+});
