@@ -17,10 +17,11 @@ mongoose.connect(process.env.MONGO_URL)
 app.get('/api/test', (req, res) => {
     res.json("Testing Done");
 });
+
+// Welcome route
 app.get('/', (req, res) => {
     res.send('Welcome to the BudgetBuddy API');
 });
-
 
 // Create new transaction
 app.post('/api/transaction', async (req, res) => {
@@ -45,7 +46,7 @@ app.delete('/api/transactions/reset', async (req, res) => {
     }
 });
 
-// Start the server
+// Start the server on port 4000 or the environment's specified port
 app.listen(process.env.PORT || 4000, () => {
     console.log("Server is running on port", process.env.PORT || 4000);
 });

@@ -69,18 +69,11 @@ function App() {
   return (
     <>
       <main>
-        {/* Header with Project Name */}
         <h1 className="budget-title">BudgetBuddy</h1>
-
-        {/* Dynamic Balance Display */}
         <h1 className={`balance ${balance >= 0 ? 'positive' : 'negative'}`}>
           ₹{balance.toFixed(2)}
         </h1>
 
-        {/* Reset Button */}
-
-
-        {/* Add Transaction Form */}
         <form onSubmit={addTransaction}>
           <div className="basic-info">
             <input
@@ -106,7 +99,6 @@ function App() {
           <button type="submit">Add new transaction</button>
         </form>
 
-        {/* Transactions List */}
         <div className="transactions">
           {transactions.length > 0 &&
             transactions.map((transaction, index) => (
@@ -117,9 +109,7 @@ function App() {
                 </div>
                 <div className="right">
                   <div
-                    className={
-                      'price ' + (transaction.price < 0 ? 'red' : 'green')
-                    }
+                    className={ 'price ' + (transaction.price < 0 ? 'red' : 'green') }
                   >
                     ₹{transaction.price}
                   </div>
@@ -128,6 +118,7 @@ function App() {
               </div>
             ))}
         </div>
+
         <button onClick={resetExpenses} className="reset-expenses">
           Reset
         </button>
