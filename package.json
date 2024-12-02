@@ -5,7 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "backend": "nodemon ./api/index.js",
+    "backend": "node ./api/index.cjs",
+    "start": "node ./api/index.cjs",
     "build": "vite build",
     "preview": "vite preview"
   },
