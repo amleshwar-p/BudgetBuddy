@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGO_URL)
 app.get('/api/test', (req, res) => {
     res.json("Testing Done");
 });
+app.get('/', (req, res) => {
+    res.send('Welcome to the BudgetBuddy API');
+});
+
 
 // Create new transaction
 app.post('/api/transaction', async (req, res) => {
