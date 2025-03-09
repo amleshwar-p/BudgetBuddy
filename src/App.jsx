@@ -32,6 +32,7 @@ function App() {
     const transactionName = name.includes(' ') ? name.substring(name.indexOf(' ') + 1).trim() : name;
 
     const url = import.meta.env.VITE_APP_API_URL + '/api/transaction';
+    
 
     fetch(url, {
       method: 'POST',
