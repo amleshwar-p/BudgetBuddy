@@ -14,7 +14,7 @@ function App() {
 
   // Fetch transactions from the backend
   async function getTransactions() {
-    const url = import.meta.env.VITE_APP_API_URL + '/transactions';
+    const url = import.meta.env.VITE_APP_API_URL + '/api/transactions';
     const response = await fetch(url);
     return await response.json();
   }
@@ -22,8 +22,16 @@ function App() {
   // Add a new transaction
   function addTransaction(e) {
     e.preventDefault();
-    const url = import.meta.env.VITE_APP_API_URL + '/transaction';
-    const price = name.split(' ')[0];
+
+    if (!name.trim()) {
+      console.error("Transaction name is required");
+      return;
+    }
+
+    const price = parseFloat(name.split(' ')[0]) || 0;
+    const transactionName = name.includes(' ') ? name.substring(name.indexOf(' ') + 1).trim() : name;
+
+    const url = import.meta.env.VITE_APP_API_URL + '/api/transaction';
 
     fetch(url, {
       method: 'POST',
@@ -32,7 +40,7 @@ function App() {
       },
       body: JSON.stringify({
         price,
-        name: name.substring(price.length + 1),
+        name: transactionName, // Ensure name is always non-empty
         datetime,
         description
       })
@@ -55,7 +63,7 @@ function App() {
   // Reset all transactions
   function resetExpenses() {
     // Send a DELETE request to the backend to reset all transactions
-    const url = import.meta.env.VITE_APP_API_URL + '/transactions/reset';
+    const url = import.meta.env.VITE_APP_API_URL + '/api/transactions/reset';
     fetch(url, { method: 'DELETE' })
       .then(() => {
         // Clear transactions locally (in the state)
@@ -102,7 +110,7 @@ function App() {
         <div className="transactions">
           {transactions.length > 0 &&
             transactions.map((transaction, index) => (
-              <div className="transaction" key={transaction.id || index}>
+              <div className="transaction" key={transaction._id || index}>
                 <div className="left">
                   <div className="name">{transaction.name}</div>
                   <div className="description">{transaction.description}</div>
