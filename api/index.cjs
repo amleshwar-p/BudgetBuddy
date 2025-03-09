@@ -47,6 +47,7 @@ app.delete('/api/transactions/reset', async (req, res) => {
 });
 
 // Start the server on port 4000 or the environment's specified port
-app.listen(process.env.PORT || 4000, () => {
-    console.log("Server is running on port", process.env.PORT || 4000);
-});
+// app.listen(process.env.PORT || 4000, () => {
+//     console.log("Server is running on port", process.env.PORT || 4000);
+// });
+module.exports = app; // Export the app for Vercel
